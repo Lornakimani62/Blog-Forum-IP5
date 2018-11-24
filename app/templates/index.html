@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro%}
+<!-- Styles Block -->
+
+{% block Styles%}
+{{ super ()}}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+<!-- This describes what will appear on the landing page -->
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+<title>Blog Forum</title>
+  <!-- Header -->
+  <section class="text-white text-center section-1">
+        <header class="masthead text-center text-black d-flex">
+            <div class="container my-auto">
+              <div class="row">
+                <div class="col-lg-10 mx-auto">
+                  <h1><strong>Your to goto website that allows you to write and post blogs depending on your interests</strong></h1>
+                  <button type="button" class="btn btn-light btn-xl" ><a href="">Get Started</a></button>
+                  <hr>
+                </div>
+                <div class="col-lg-8 mx-auto">
+                </div>
+              </div>
+            </div>
+        </header>
+    </section>
+    
+<!-- Blogs section -->
+<div class="row" id="gaming">
+        <div class="category col-md-12">
+            <h4 class="blog_title">Gaming</h4>
+            <ul>
+                {{macro.displayBlogs(Gaming)}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="career">
+        <div class="category col-md-12">
+            <h4 class="blog_title">Career</h4>
+            <ul>
+                {{macro.displayBlogs(Career)}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="fianace">
+        <div class="category col-md-12">
+            <h4 class="blog_title">Finance</h4>
+            <ul>
+                {{macro.displayBlogs(Finance)}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="gossip">
+        <div class="category col-md-12">
+            <h4 class="blog_title">Gossip</h4>
+            <ul>
+                {{macro.displayBlogs(Gossip)}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="fitness">
+        <div class="category col-md-12">
+            <h4 class="blog_title">Finance</h4>
+            <ul>
+                {{macro.displayBlogs(Finance)}}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock%}
+</html>
+

@@ -16,4 +16,5 @@ from .forms import updateProfile,BlogForm,CommentForm
     Sports = Blog.query.filter_by(category="Sports").all()
     Fitness = Blog.query.filter_by(category="Fitness")
 
-    return render_template('index.html',title=title,Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness)
+    blogs = Blog.query.filter().all()
+    return render_template('index.html',title=title,Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness,blogs=blogs)

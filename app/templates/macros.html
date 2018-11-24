@@ -1,0 +1,21 @@
+{%macro displayBlogs(blogs)%}
+<div class= "container-fluid">
+    <div class="row">
+    {%for blog in blogs%}
+    <div class="col-md-6 d- flex mb-4">
+        <div class="carder border-dark flex-fill">
+            <div class="card-header">
+                <h4 class="blog_title">{{blog.blog_title}}</h4>
+            </div>
+        <div class="card-body">
+            <p>{{blog.blog_description|truncate(300)}}</p>
+            <p class="text muted">posted by {{blog.author}}</p>
+            <a href="">View More</a>
+        </div>
+    </div>
+</div>
+{%endfor%}
+</div>
+</div>
+
+
