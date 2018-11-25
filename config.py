@@ -4,7 +4,8 @@ import os
 
 class Config:
     # Defines the key required by the flask forms
-    SECRET KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+    SQLALCHEMY_TRACK_MODIFICATIONS=True
     # Defines where the users profile pictures will be stored
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
@@ -23,7 +24,7 @@ class ProdConfig(Config):
     pass
 
 class DevConfig(Config):
-     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lorna:0724276722@localhost/pitches'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lorna:0724276722@localhost/blogs'
 
     DEBUG = True
 

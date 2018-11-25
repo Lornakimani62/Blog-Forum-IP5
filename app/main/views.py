@@ -3,11 +3,11 @@ from flask_login import login_required,current_user
 from . import main
 from .. import db,photos
 from ..models import User,Role,Blog,Comment
-from .forms import updateProfile,BlogForm,CommentForm
+from .forms import UpdateProfile,BlogForm,CommentForm
 
 # View function for the landing page
 @main.route('/')
-    title = 'Dashboard' if current_user.is_authenticated else 'Home'
+def index():
 
     Gaming = Blog.query.filter_by(category="Gaming").all()
     Career = Blog.query.filter_by(category="Career").all()
@@ -17,4 +17,4 @@ from .forms import updateProfile,BlogForm,CommentForm
     Fitness = Blog.query.filter_by(category="Fitness")
 
     blogs = Blog.query.filter().all()
-    return render_template('index.html',title=title,Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness,blogs=blogs)
+    return render_template('index.html',Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness,blogs=blogs)

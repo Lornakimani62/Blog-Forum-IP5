@@ -18,8 +18,8 @@ class User(UserMixin,db.Model):
     password_hash = db.Column(db.String(255))
 
     # Defines the one to many relationships in the application
-    blogs = db.relationship('Blog', backref = 'user', lazy ='dynamic')
-    comments = db.relationship('Comment', backref = 'user' lazy='dynamic')
+    blogs = db.relationship('Blog', backref = 'user', lazy ="dynamic")
+    comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
 
     # Defines the foreign keys to accesed by the user table for the one to many relationship
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
@@ -62,7 +62,7 @@ class Blog(db.Model):
     blog_description = db.Column(db.String(255))
     story = db.Column(db.String())
     category = db.Column(db.String(255))
-    posted  = db.Column(db.Datetime,default=datetime.utcnow)
+    posted  = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
 
     # This defines the relationships with other tables
     author = db.Column(db.Integer,db.ForeignKey("users.id"))
