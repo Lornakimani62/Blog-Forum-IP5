@@ -69,21 +69,21 @@ def new_blog():
 
     if blog_form.validate_on_submit():
 
-        title= blog_form.title.data
+        blog_title= blog_form.blog_title.data
         blog_description= blog_form.blog_description.data
         story= blog_form.story.data
         category= blog_form.category.data
 
         # Updated  instance
-        new_blog = Blog(title=title,blog_description=blog_description,story=story,category=category,user=current_user)
+        new_blog = Blog(blog_title=blog_title,blog_description=blog_description,story=story,category=category,user=current_user)
         blogs = Blog.query.filter().all()
         # save  method
         new_blog.save_blog()
 
-        return redirect(url_for('main.blogs.html'))
+        return redirect(url_for('main.blog'))
 
     title = 'New Blog'
-    return render_template('new_blog.html',title = title, blog_form=blog_form, Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness,blogs=blogs)
+    return render_template('new_blog.html',title = title, blog_form=blog_form)
 
 # View function to display blog articles
 @main.route('/blog', methods = ['GET','POST'])

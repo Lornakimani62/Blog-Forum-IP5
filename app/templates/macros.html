@@ -10,7 +10,7 @@
         <div class="card-body">
             <p>{{blog.blog_description|truncate(300)}}</p>
             <p class="text muted">posted by {{blog.author}}</p>
-            <a href="">View More</a>
+            <a class="btn btn-success btn-xl sr-button" href="{{url_for('main.blog')}}">View More</a>
         </div>
     </div>
 </div>
