@@ -14,7 +14,7 @@ def index():
     Finance = Blog.query.filter_by(category="Finance").all()
     Gossip = Blog.query.filter_by(category="Gossip").all()
     Sports = Blog.query.filter_by(category="Sports").all()
-    Fitness = Blog.query.filter_by(category="Fitness")
+    Fitness = Blog.query.filter_by(category="Fitness").all()
 
     blogs = Blog.query.filter().all()
     return render_template('index.html',Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness,blogs=blogs)
@@ -60,3 +60,36 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+# Blog view function
+@main.route('/blog/new', methods = ['GET','POST'])
+@login_required
+def new_blog():
+    blog_form = BlogForm()
+
+    Gaming = Blog.query.filter_by(category="Gaming").all()
+    Career = Blog.query.filter_by(category="Career").all()
+    Finance = Blog.query.filter_by(category="Finance").all()
+    Gossip = Blog.query.filter_by(category="Gossip").all()
+    Sports = Blog.query.filter_by(category="Sports").all()
+    Fitness = Blog.query.filter_by(category="Fitness").all()
+
+    blogs = Blog.query.filter().all()
+
+     if blog_form.validate_on_submit():
+
+        title= blog_form.title.data
+        blog_description= blog_form.blog_description.data
+        story= blog_form.story.data
+        category= blog_form.category.data
+
+        # Updated  instance
+        new_blog Blog(title=title,blog_description=blog_description,story=story,category=category,user=current_user)
+        blogs = Blog.query.filter().all()
+        # save  method
+        new_blog.save_blog()
+
+        return redirect(url_for('main.blogs.html'))
+
+    title = 'New Blog'
+    return render_template('blogs.html',title = title, blog_form=blog_form, Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness,blogs=blogs)
+
