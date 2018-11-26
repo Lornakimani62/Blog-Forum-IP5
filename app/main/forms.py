@@ -29,3 +29,7 @@ class UpdateProfile(FlaskForm):
 # class DeletePost(FlaskForm):
 #     comment_id = StringField()
 #     delete = SubmitField('Delete')
+
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about you.',validators = [Required()])
+    submit = SubmitField('Submit')
