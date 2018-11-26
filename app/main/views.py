@@ -66,6 +66,29 @@ def update_pic(uname):
 def new_blog():
     blog_form = BlogForm()
 
+
+    if blog_form.validate_on_submit():
+
+        title= blog_form.title.data
+        blog_description= blog_form.blog_description.data
+        story= blog_form.story.data
+        category= blog_form.category.data
+
+        # Updated  instance
+        new_blog = Blog(title=title,blog_description=blog_description,story=story,category=category,user=current_user)
+        blogs = Blog.query.filter().all()
+        # save  method
+        new_blog.save_blog()
+
+        return redirect(url_for('main.blogs.html'))
+
+    title = 'New Blog'
+    return render_template('new_blog.html',title = title, blog_form=blog_form, Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness,blogs=blogs)
+
+# View function to display blog articles
+@main.route('/blog', methods = ['GET','POST'])
+@login_required
+def blog():
     Gaming = Blog.query.filter_by(category="Gaming").all()
     Career = Blog.query.filter_by(category="Career").all()
     Finance = Blog.query.filter_by(category="Finance").all()
@@ -75,21 +98,4 @@ def new_blog():
 
     blogs = Blog.query.filter().all()
 
-     if blog_form.validate_on_submit():
-
-        title= blog_form.title.data
-        blog_description= blog_form.blog_description.data
-        story= blog_form.story.data
-        category= blog_form.category.data
-
-        # Updated  instance
-        new_blog Blog(title=title,blog_description=blog_description,story=story,category=category,user=current_user)
-        blogs = Blog.query.filter().all()
-        # save  method
-        new_blog.save_blog()
-
-        return redirect(url_for('main.blogs.html'))
-
-    title = 'New Blog'
-    return render_template('blogs.html',title = title, blog_form=blog_form, Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness,blogs=blogs)
-
+    return render_template('blogs.html',Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness,blogs=blogs)

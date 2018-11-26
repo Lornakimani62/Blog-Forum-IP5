@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<!-- Body Section -->
+<div class="container wrapper">
+    <div class="row">
+        {% for blog in blogs%}
+        <div class="col-sm-6 d-flex mb-3">
+            <div class="card border-dark flex-fill">
+                <div class="card-body">
+                    <h4 class="card-title">{{blog.title}}</h4>
+                    <hr>
+                    <p>{{blog.story|truncate(500)}}...
+                        <a href="{{article.url}}" target="_blank">Comment</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
