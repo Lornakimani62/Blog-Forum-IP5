@@ -2,7 +2,8 @@
 ## Description
 This application allows users to post,view and comment on blog articles
 ## Link to Deployed site
-Here is the a link to the application
+Here is the a link to the application [
+This application allows users to post,view and comment on blog articles]
 
 # Setup and installations
 ## Prerequisites
