@@ -99,3 +99,20 @@ def blog():
     blogs = Blog.query.filter().all()
 
     return render_template('blogs.html',Gaming=Gaming,Career=Career,Finance=Finance,Gossip=Gossip,Sports=Sports,Fitness=Fitness,blogs=blogs)
+
+# The view function for comments
+@main.route('/comment/<int:id>', methods = ['GET','POST'])
+@login_required
+def new_comment(id):
+    comment = Comment.query.filter_by(blog_id=id)
+
+    form_comment = CommentForm()
+    if form_comment.validate_on_submit():
+        comment = form_comment.comment.data
+
+        new_comment = Comment(comment= comment,blog_id=id,user=current_user)
+        # # save comment
+        db.session.add(new_comment)
+        db.session.commit()
+
+    return render_template('comments.html',form_comment = form_comment,comment=comment)
