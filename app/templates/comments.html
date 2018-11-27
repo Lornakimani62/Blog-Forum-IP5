@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block content %}
+
+
+
+  {{wtf.quick_form(form_comment)}}
+<div class="container wrapper">
+<div class="row">
+  {% for comment in comment%}
+<div class="col-md-12 mb-3">
+  <div class="card border-dark flex-fill">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{comment.blog.blog_title}}</h5>
+      <p>{{comment.comment}}</p>
+      <p>Posted by {{comment.user.username}}</p>
+      <a class="btn btn-danger btn-xl sr-button" href="">Delete</a>
+
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+
+{% endblock%}

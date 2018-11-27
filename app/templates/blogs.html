@@ -19,9 +19,11 @@
                     {{blog.blog_title}}
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">posted by {{blog.author}}</h5>
+                  <h2 class="card-title"><strong>{{blog.blog_title}}</strong></h2>
                   <p class="card-text">{{blog.story|truncate(500)}}</p>
-                  <a href="#" class="btn btn-primary">comment</a>
+                  <p class="text muted">posted by {{blog.user.username}}</p>
+                  <p class="text muted">posted on {{blog.posted}}</p>
+                  <a class="btn btn-primary btn-xl sr-button" href="{{url_for('main.new_comment',id = blog.id)}}"> Comment</a>
             </div>
         </div>
     </div>

@@ -19,15 +19,17 @@
 </head>
 <title>Blog Forum</title>
   <!-- Header -->
-  <section class="text-white text-center section-1">
+  <section class="text-black text-center section-1">
         <header class="masthead text-center text-black d-flex">
-            <div class="container my-auto">
+            <div class="container-fluid">
+                    <div class="jumbotron">
               <div class="row">
                 <div class="col-lg-10 mx-auto">
                   <h1><strong>Your to goto website that allows you to write and post blogs depending on your interests</strong></h1>
-                  <button type="button" class="btn btn-light btn-xl" ><a href="">Get Started</a></button>
+                  <a class="btn btn-light btn-xl sr-button" href="{{url_for('auth.login')}}">Get Started</a>
                   <hr>
                 </div>
+            </div>
                 <div class="col-lg-8 mx-auto">
                 </div>
               </div>

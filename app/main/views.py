@@ -108,7 +108,7 @@ def new_comment(id):
 
     form_comment = CommentForm()
     if form_comment.validate_on_submit():
-        comment = form_comment.comment.data
+        comment = form_comment.details.data
 
         new_comment = Comment(comment= comment,blog_id=id,user=current_user)
         # # save comment
