@@ -2,8 +2,7 @@
 ## Description
 This application allows users to post,view and comment on blog articles
 ## Link to Deployed site
-Here is the a link to the application [
-This application allows users to post,view and comment on blog articles]
+Here is the a link to the application (https://lornakimaniblogforum.herokuapp.com/)
 
 # Setup and installations
 ## Prerequisites
